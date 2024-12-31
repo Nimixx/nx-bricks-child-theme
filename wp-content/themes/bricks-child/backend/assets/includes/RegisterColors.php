@@ -7,42 +7,18 @@ class RegisterColors {
      */
     private static $colors = [
         // Background Colors
-        [
-            'name' => 'Background/Base',
-            'raw' => 'var(--bg-base)'
-        ],
-        [
-            'name' => 'Background/Subtle',
-            'raw' => 'var(--bg-subtle)'
-        ],
-        [
-            'name' => 'Background/Muted',
-            'raw' => 'var(--bg-muted)'
-        ],
+        ['raw' => 'var(--bg-base)'],
+        ['raw' => 'var(--bg-subtle)'],
+        ['raw' => 'var(--bg-muted)'],
 
         // Foreground Colors
-        [
-            'name' => 'Foreground/Default',
-            'raw' => 'var(--fg-default)'
-        ],
-        [
-            'name' => 'Foreground/Muted',
-            'raw' => 'var(--fg-muted)'
-        ],
-        [
-            'name' => 'Foreground/Subtle',
-            'raw' => 'var(--fg-subtle)'
-        ],
+        ['raw' => 'var(--fg-default)'],
+        ['raw' => 'var(--fg-muted)'],
+        ['raw' => 'var(--fg-subtle)'],
 
         // Border Colors
-        [
-            'name' => 'Border/Default',
-            'raw' => 'var(--border-default)'
-        ],
-        [
-            'name' => 'Border/Muted',
-            'raw' => 'var(--border-muted)'
-        ]
+        ['raw' => 'var(--border-default)'],
+        ['raw' => 'var(--border-muted)']
     ];
 
     public static function init() {
