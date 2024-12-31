@@ -1,64 +1,45 @@
-/* CSS Custom Properties (Design Tokens) */
+/* Design Tokens */
 :root {
-  /* Colors body */
-  --bg-body: oklch(15% 0 4.24);
-  --bg-body-light: oklch(97% 0 4.24);
-  /* Colors primary */
-  --color-primary: #e745ec;
-  --color-primary-light: #60a5fa;
-  --color-primary-dark: #1e40af;
-  /* Colors secondary */
-  --color-secondary: #475569;
-  /* Colors accent */
-  --color-accent: #f59e0b;
-  /* Colors text */
-  --color-text: #1f2937;
-  --color-text-light: #6b7280;
+  color-scheme: light dark;
+
+  /* Color Scale - Neutral Colors */
+  --color-neutral-50:  oklch(98% 0 0);
+  --color-neutral-100: oklch(95% 0 0);
+  --color-neutral-200: oklch(90% 0 0);
+  --color-neutral-300: oklch(80% 0 0);
+  --color-neutral-400: oklch(70% 0 0);
+  --color-neutral-500: oklch(60% 0 0);
+  --color-neutral-600: oklch(45% 0 0);
+  --color-neutral-700: oklch(35% 0 0);
+  --color-neutral-800: oklch(25% 0 0);
+  --color-neutral-900: oklch(15% 0 0);
+  --color-neutral-950: oklch(10% 0 0);
+
+  /* Semantic Tokens - Light Mode Default */
+  --bg-base: var(--color-neutral-50);
+  --bg-subtle: var(--color-neutral-100);
+  --bg-muted: var(--color-neutral-200);
   
-  /* Typography */
-  --font-family-base: system-ui, -apple-system, sans-serif;
-  --font-family-heading: var(--font-family-base);
+  --fg-default: var(--color-neutral-900);
+  --fg-muted: var(--color-neutral-700);
+  --fg-subtle: var(--color-neutral-600);
   
-  /* Fluid Typography using clamp */
-  --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-  --font-size-sm: clamp(0.875rem, 0.825rem + 0.25vw, 1rem);
-  --font-size-lg: clamp(1.125rem, 1.075rem + 0.25vw, 1.25rem);
-  --font-size-xl: clamp(1.25rem, 1.2rem + 0.25vw, 1.5rem);
-  --font-size-2xl: clamp(1.5rem, 1.4rem + 0.5vw, 2rem);
-  --font-size-3xl: clamp(2rem, 1.85rem + 0.75vw, 2.5rem);
-  
-  /* Spacing */
-  --space-unit: clamp(0.5rem, 0.5rem + 0.5vw, 1rem);
-  --space-xs: calc(0.5 * var(--space-unit));
-  --space-sm: calc(0.75 * var(--space-unit));
-  --space-md: var(--space-unit);
-  --space-lg: calc(1.5 * var(--space-unit));
-  --space-xl: calc(2 * var(--space-unit));
-  --space-2xl: calc(3 * var(--space-unit));
-  
-  /* Layout */
-  --container-width: min(100% - 2rem, 80rem);
-  --container-padding: var(--space-md);
-  
-  /* Border Radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
-  --radius-full: 9999px;
-  
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-normal: 250ms ease;
-  --transition-slow: 350ms ease;
-  
-  /* Z-index */
-  --z-below: -1;
-  --z-normal: 1;
-  --z-above: 10;
-  --z-modal: 100;
+  --border-default: var(--color-neutral-200);
+  --border-muted: var(--color-neutral-300);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-base: var(--color-neutral-950);
+    --bg-subtle: var(--color-neutral-900);
+    --bg-muted: var(--color-neutral-800);
+    
+    --fg-default: var(--color-neutral-100);
+    --fg-muted: var(--color-neutral-300);
+    --fg-subtle: var(--color-neutral-400);
+    
+    --border-default: var(--color-neutral-800);
+    --border-muted: var(--color-neutral-700);
+  }
 }
