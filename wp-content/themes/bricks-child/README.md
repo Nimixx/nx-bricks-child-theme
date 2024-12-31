@@ -1,0 +1,1 @@
+# Bricks Child Theme
