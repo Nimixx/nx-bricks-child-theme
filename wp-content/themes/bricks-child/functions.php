@@ -2,6 +2,6 @@
 /**
  * Initialize Asset Manager
  */
-require_once __DIR__ . '/backend/assets/includes/AssetManager.php';
+require_once __DIR__ . '/core/AssetManager.php';
 
 BricksChild\AssetManager::getInstance();
