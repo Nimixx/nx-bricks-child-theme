@@ -1,16 +1,19 @@
 /* CSS Custom Properties (Design Tokens) */
 :root {
-  /* Colors */
-  --color-primary: #2563eb;
+  /* Colors body */
+  --bg-body: oklch(15% 0 4.24);
+  --bg-body-light: oklch(97% 0 4.24);
+  /* Colors primary */
+  --color-primary: #e745ec;
   --color-primary-light: #60a5fa;
   --color-primary-dark: #1e40af;
+  /* Colors secondary */
   --color-secondary: #475569;
+  /* Colors accent */
   --color-accent: #f59e0b;
-  
+  /* Colors text */
   --color-text: #1f2937;
   --color-text-light: #6b7280;
-  --color-background: #ffffff;
-  --color-surface: #f3f4f6;
   
   /* Typography */
   --font-family-base: system-ui, -apple-system, sans-serif;

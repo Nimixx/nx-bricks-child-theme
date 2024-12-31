@@ -8,6 +8,8 @@ class RegisterTokens {
 
     public static function registerColors($colors) {
         return [
+            ['raw' => 'var(--bg-body)'],
+            ['raw' => 'var(--bg-body-light)'],
             ['raw' => 'var(--color-primary)'],
             ['raw' => 'var(--color-primary-light)'],
             ['raw' => 'var(--color-primary-dark)'],
@@ -15,8 +17,6 @@ class RegisterTokens {
             ['raw' => 'var(--color-accent)'],
             ['raw' => 'var(--color-text)'],
             ['raw' => 'var(--color-text-light)'],
-            ['raw' => 'var(--color-background)'],
-            ['raw' => 'var(--color-surface)']
         ];
     }
 }
