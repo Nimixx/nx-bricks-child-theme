@@ -1,22 +1,26 @@
 <?php
+declare(strict_types=1);
 
 require_once get_stylesheet_directory() . '/core/ScriptLoader.php';
 
 use BricksChild\Core\ScriptLoader;
 
 /**
- * Registrace scriptů a stylů
+ * Asset Registration and Loading
+ * 
+ * This section handles all theme assets (CSS/JS) registration and loading
+ * using the ScriptLoader class for efficient asset management.
  */
 $scripts = ScriptLoader::getInstance();
 
-// Základní styly
+// Register frontend styles
 $scripts->add('index-style', [
     'type' => 'css',
     'path' => '/frontend/assets/css/index.style.css',
     'deps' => ['bricks-frontend']
 ]);
 
-// Animace
+// Register animation scripts
 $scripts->add('anime', [
     'path' => '/frontend/assets/js/anime.min.js',
     'deps' => ['jquery'],
@@ -24,19 +28,31 @@ $scripts->add('anime', [
     'condition' => fn() => is_front_page() || is_single()
 ]);
 
-// Backend script (příklad)
+// Register admin-specific scripts
 $scripts->add('admin-script', [
     'path' => '/backend/assets/js/admin.js',
     'frontend_only' => false,
     'condition' => fn() => is_admin()
 ]);
 
-// Enqueue assets
+// Hook asset loading into WordPress
 add_action('wp_enqueue_scripts', [$scripts, 'enqueue']);
 add_action('admin_enqueue_scripts', [$scripts, 'enqueue']);
 
 /**
- * Backend includes configuration
+ * Backend Features Configuration
+ * 
+ * Configuration array for backend features and builder components.
+ * Each feature is loaded based on its priority (lower number = higher priority).
+ * 
+ * @var array[] $includes {
+ *     Array of feature configurations
+ *     
+ *     @type array {
+ *         @type string $path     Path to the feature file relative to theme directory
+ *         @type int    $priority Loading priority (1-10, lower = higher priority)
+ *     }
+ * }
  */
 $includes = [
     [
@@ -53,7 +69,12 @@ $includes = [
     ]
 ];
 
-// Načtení PHP souborů
+/**
+ * Load Backend Features
+ * 
+ * Loads all backend feature files that exist in the filesystem.
+ * Files are filtered to ensure they exist before attempting to load them.
+ */
 array_map(
     fn($file) => require_once get_stylesheet_directory() . $file['path'],
     array_filter(

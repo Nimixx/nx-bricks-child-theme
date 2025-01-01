@@ -1,21 +1,60 @@
-/* Design Tokens */
+/**
+ * Design System Tokens
+ * 
+ * This file defines the core design tokens for the theme using CSS custom properties.
+ * It implements a semantic color system with light/dark mode support.
+ * 
+ * Color System:
+ * - Uses OKLCH color space for better perceptual uniformity
+ * - Implements a neutral color scale from 50-950
+ * - Provides semantic tokens for backgrounds, foregrounds, and borders
+ */
+
+/* -----------------------------------------------------------------------------
+ * Color Scale Definition
+ * ---------------------------------------------------------------------------*/
+
 :root {
+  /* Enable system color scheme detection */
   color-scheme: light dark;
 
-  /* Color Scale - Neutral Colors */
-  --color-neutral-50:  oklch(98% 0 0);
+  /**
+   * Neutral Color Scale
+   * 
+   * Uses OKLCH color space values:
+   * - Lightness: 98% -> 10%
+   * - Chroma: 0 (neutral gray)
+   * - Hue: 0 (not relevant for neutral colors)
+   */
+  --color-neutral-50:  oklch(98% 0 0); /* Lightest - nearly white */
   --color-neutral-100: oklch(95% 0 0);
   --color-neutral-200: oklch(90% 0 0);
   --color-neutral-300: oklch(80% 0 0);
   --color-neutral-400: oklch(70% 0 0);
-  --color-neutral-500: oklch(60% 0 0);
+  --color-neutral-500: oklch(60% 0 0); /* Mid-point */
   --color-neutral-600: oklch(45% 0 0);
   --color-neutral-700: oklch(35% 0 0);
   --color-neutral-800: oklch(25% 0 0);
   --color-neutral-900: oklch(15% 0 0);
-  --color-neutral-950: oklch(10% 0 0);
+  --color-neutral-950: oklch(10% 0 0); /* Darkest - nearly black */
 
-  /* Semantic Tokens - Light Mode Default */
+  /**
+   * Semantic Color Tokens - Light Mode
+   * 
+   * Background colors:
+   * - base:   Primary background (lightest)
+   * - subtle: Secondary background
+   * - muted:  Tertiary background
+   * 
+   * Foreground colors:
+   * - default: Primary text
+   * - muted:   Secondary text
+   * - subtle:  Tertiary text
+   * 
+   * Border colors:
+   * - default: Primary borders
+   * - muted:   Secondary borders
+   */
   --bg-base: var(--color-neutral-50);
   --bg-subtle: var(--color-neutral-100);
   --bg-muted: var(--color-neutral-200);
@@ -28,7 +67,16 @@
   --border-muted: var(--color-neutral-300);
 }
 
-/* Dark Mode */
+/* -----------------------------------------------------------------------------
+ * Dark Mode Override
+ * ---------------------------------------------------------------------------*/
+
+/**
+ * Dark Mode Color Tokens
+ * 
+ * Inverts the color relationships while maintaining contrast ratios.
+ * Triggered by system preference via `prefers-color-scheme`.
+ */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-base: var(--color-neutral-950);
