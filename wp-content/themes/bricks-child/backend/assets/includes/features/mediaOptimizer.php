@@ -90,3 +90,6 @@ class MediaOptimizer
         return ucwords(strtolower($filename));
     }
 }
+
+// Inicializace při načtení souboru
+MediaOptimizer::initialize();

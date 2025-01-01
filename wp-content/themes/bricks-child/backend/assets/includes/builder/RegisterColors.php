@@ -1,5 +1,7 @@
 <?php
-namespace BricksChild;
+declare(strict_types=1);
+
+namespace BricksChild\Builder;
 
 class RegisterColors {
     /**

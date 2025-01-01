@@ -12,3 +12,6 @@ class DisableAdminNotice {
         }
     }
 }
+
+// Inicializace při načtení souboru
+DisableAdminNotice::initialize();
