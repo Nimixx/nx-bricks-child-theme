@@ -1,6 +1,7 @@
 <?php
+declare(strict_types=1);
 
-namespace Backend\Assets\Includes\Features;
+namespace BricksChild\Features;
 
 /**
  * Jednoduchá třída pro optimalizaci médií ve WordPressu
@@ -12,6 +13,13 @@ class MediaOptimizer
     /** @var array Velikosti obrázků, které chceme zachovat */
     private array $allowed_sizes;
 
+    public static function initialize(): void 
+    {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+    }
+
     private function __construct()
     {
         $this->allowed_sizes = [
@@ -22,14 +30,6 @@ class MediaOptimizer
         ];
 
         $this->registerHooks();
-    }
-
-    public static function getInstance(): self
-    {
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
-        return self::$instance;
     }
 
     /**

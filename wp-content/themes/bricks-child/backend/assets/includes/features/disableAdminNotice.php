@@ -1,10 +1,10 @@
 <?php
+declare(strict_types=1);
 
-namespace Backend\Assets\Includes\Features;
+namespace BricksChild\Features;
 
 class DisableAdminNotice {
-    
-    public function __construct() {
+    public static function initialize(): void {
         if (!is_admin()) {
             add_filter('show_admin_bar', '__return_false');
             add_theme_support('admin-bar', ['callback' => '__return_false']);

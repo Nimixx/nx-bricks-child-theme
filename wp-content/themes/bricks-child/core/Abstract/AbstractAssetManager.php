@@ -17,6 +17,8 @@ abstract class AbstractAssetManager
         ]
     ];
 
+    protected array $includePriorities = [];
+
     protected function getAssetFiles(string $dir, string $extension): array
     {
         try {
@@ -30,7 +32,7 @@ abstract class AbstractAssetManager
                 new \RecursiveDirectoryIterator($dir_path, \RecursiveDirectoryIterator::SKIP_DOTS)
             );
 
-            return array_values(
+            $files = array_values(
                 array_filter(
                     array_map(
                         fn(\SplFileInfo $file) => $file->isFile() && $file->getExtension() === $extension 
@@ -40,6 +42,20 @@ abstract class AbstractAssetManager
                     )
                 )
             );
+
+            if ($extension === 'php' && !empty($this->includePriorities)) {
+                usort($files, function($a, $b) {
+                    $fileA = basename($a);
+                    $fileB = basename($b);
+                    
+                    $priorityA = $this->includePriorities[$fileA] ?? 10;
+                    $priorityB = $this->includePriorities[$fileB] ?? 10;
+                    
+                    return $priorityA <=> $priorityB;
+                });
+            }
+
+            return $files;
         } catch (\Exception $e) {
             error_log("BricksChild AssetsManager Error: {$e->getMessage()}");
             return [];

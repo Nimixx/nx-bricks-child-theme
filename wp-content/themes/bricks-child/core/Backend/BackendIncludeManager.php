@@ -7,6 +7,17 @@ use BricksChild\Abstract\AbstractAssetManager;
 
 class BackendIncludeManager extends AbstractAssetManager
 {
+    public function __construct()
+    {
+        // Definujeme priority pro načítání PHP souborů
+        // Nižší číslo = vyšší priorita (dřívější načtení)
+        $this->includePriorities = [
+            'mediaOptimizer.php' => 5,      // Načte se jako první
+            'disableAdminNotice.php' => 10,  // Načte se jako druhý
+            // Další soubory budou mít výchozí prioritu 10, pokud není specifikováno jinak
+        ];
+    }
+
     public function includeFiles(): void
     {
         try {
